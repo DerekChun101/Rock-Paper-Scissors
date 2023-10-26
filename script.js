@@ -1,15 +1,12 @@
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3);
     if(choice === 0) {
-        console.log("Rock");
         return "rock";    
     }
     else if(choice === 1) {
-        console.log("Paper");
         return "paper";
     }
     else {
-        console.log("Scissors");
         return "scissors";
     }
 }
@@ -28,7 +25,7 @@ function getPlayerChoice() {
             break;
         default:
             alert("Make sure you spell it right");
-            getPlayerChoice();
+            return getPlayerChoice();
 
     }
 }
@@ -79,6 +76,8 @@ function game() {
     while(round < 5) {
         const computerSelection = getComputerChoice();
         const playerSelection = getPlayerChoice();
+        console.log(playerSelection);
+        console.log(computerSelection);
         switch(playRound(playerSelection, computerSelection)) {
             case "win":
                 playerCount++;
@@ -95,12 +94,15 @@ function game() {
     console.log(computerCount);
     if(playerCount > computerCount) {
         alert("You Won the Game!");
+        console.log("Player Wins!")
     }
     else if(playerCount < computerCount) {
         alert("You Loss the Game!");
+        console.log("Player loses")
     }
     else {
         alert("You Tie!")
+        console.log("Player Ties")
     }
 }
 
