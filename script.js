@@ -35,42 +35,72 @@ function getPlayerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     if(playerSelection === "rock" && computerSelection === "scissors") {
-        return("You win! Rock beats Scissors");
+        console.log("You win! Rock beats Scissors");
+        return "win";
     }
     else if(playerSelection === "rock" && computerSelection === "paper") {
-        return("You lose! Paper beats Rock");
+        console.log("You lose! Paper beats Rock");
+        return "lose";
     }
     else if(playerSelection === "rock" && computerSelection === "rock") {
-        return("Tie!");
+        console.log("Tie!");
+        return "tie";
     }
     else if(playerSelection === "paper" && computerSelection === "rock") {
-        return("You win! Paper beats Rock");
+        console.log("You win! Paper beats Rock");
+        return "win";
     }
     else if(playerSelection === "paper" && computerSelection === "paper") {
-        return("Tie!");
+        console.log("Tie!");
+        return "tie"
     }
     else if(playerSelection === "paper" && computerSelection === "scissors") {
-        return("You lose! Scissors beats Paper");
+        console.log("You lose! Scissors beats Paper");
+        return "lose";
     }
     else if(playerSelection === "scissors" && computerSelection === "rock") {
-        return("You lose! Rock beats Scissors");
+        console.log("You lose! Rock beats Scissors");
+        return "lose";
     }
     else if(playerSelection === "scissors" && computerSelection === "paper") {
-        return("You win! Scissors beats Paperg");
+        console.log("You win! Scissors beats Paper");
+        return "win";
     }
     else if(playerSelection === "scissors" && computerSelection === "scissors") {
-        return("Tie!");
+        console.log("Tie!");
+        return "tie";
     }
 }
 
 function game() {
     let round = 0;
-    
+    let playerCount = 0;
+    let computerCount = 0;
     while(round < 5) {
         const computerSelection = getComputerChoice();
         const playerSelection = getPlayerChoice();
-        console.log(playRound(playerSelection, computerSelection));
-        round++;   
+        switch(playRound(playerSelection, computerSelection)) {
+            case "win":
+                playerCount++;
+                break;
+            case "lose":
+                computerCount++;
+                break;
+            case "tie":
+                break;
+        }
+        round++;
+    }
+    console.log(playerCount);
+    console.log(computerCount);
+    if(playerCount > computerCount) {
+        alert("You Won the Game!");
+    }
+    else if(playerCount < computerCount) {
+        alert("You Loss the Game!");
+    }
+    else {
+        alert("You Tie!")
     }
 }
 
