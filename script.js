@@ -25,12 +25,42 @@ function getPlayerChoice() {
             break;
         case "scissors":
             return "scissors";
+            break;
+        default:
+            alert("Make sure you spell it right");
+            getPlayerChoice();
 
     }
 }
 
 function playRound(playerSelection, computerSelection) {
-
+    if(playerSelection === "rock" && computerSelection === "scissors") {
+        alert("You win!");
+    }
+    else if(playerSelection === "rock" && computerSelection === "paper") {
+        alert("You lose!");
+    }
+    else if(playerSelection === "rock" && computerSelection === "rock") {
+        alert("Tie!");
+    }
+    else if(playerSelection === "paper" && computerSelection === "rock") {
+        alert("You win!");
+    }
+    else if(playerSelection === "paper" && computerSelection === "paper") {
+        alert("Tie!");
+    }
+    else if(playerSelection === "paper" && computerSelection === "scissors") {
+        alert("You lose!");
+    }
+    else if(playerSelection === "scissors" && computerSelection === "rock") {
+        alert("You lose!");
+    }
+    else if(playerSelection === "scissors" && computerSelection === "paper") {
+        alert("You win!");
+    }
+    else if(playerSelection === "scissors" && computerSelection === "scissors") {
+        alert("Tie!");
+    }
 }
 
 
