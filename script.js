@@ -1,4 +1,4 @@
-function getComputerChoice() {
+function getComputerChoice() { //Computer Randomly returns rock paper scissors
     let choice = Math.floor(Math.random() * 3);
     if(choice === 0) {
         return "rock";    
@@ -11,7 +11,7 @@ function getComputerChoice() {
     }
 }
 
-function getPlayerChoice() {
+function getPlayerChoice() { // Lets the player choose between rock papper and scissors
     const playerChoice = prompt("Choose between rock, paper, or scissors").toLowerCase();
     switch(playerChoice) {
         case "rock":
@@ -30,7 +30,7 @@ function getPlayerChoice() {
     }
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) { //Starts the round 
     if(playerSelection === "rock" && computerSelection === "scissors") {
         console.log("You win! Rock beats Scissors");
         return "win";
@@ -69,7 +69,7 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
+/*function game() { //A Game of 5 rounds 
     let round = 0;
     let playerCount = 0;
     let computerCount = 0;
@@ -90,8 +90,10 @@ function game() {
         }
         round++;
     }
-    console.log(playerCount);
+
+    console.log(playerCount); 
     console.log(computerCount);
+
     if(playerCount > computerCount) {
         alert("You Won the Game!");
         console.log("Player Wins!")
@@ -104,8 +106,8 @@ function game() {
         alert("You Tie!")
         console.log("Player Ties")
     }
-}
+}*/
 
 
-game();
+//game();
 
