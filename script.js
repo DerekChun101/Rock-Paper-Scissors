@@ -31,42 +31,45 @@ function getPlayerChoice() { // Lets the player choose between rock papper and s
 }
 
 function playRound(playerSelection, computerSelection) { //Starts the round 
+    const results = document.querySelector('#results');
+    const content = document.createElement('div');
     if(playerSelection === "rock" && computerSelection === "scissors") {
-        console.log("You win! Rock beats Scissors");
-        return "win";
+        content.textContent = ("You win! Rock beats Scissors");
+
     }
     else if(playerSelection === "rock" && computerSelection === "paper") {
-        console.log("You lose! Paper beats Rock");
-        return "lose";
+        content.textContent = ("You lose! Paper beats Rock");
+       
     }
     else if(playerSelection === "rock" && computerSelection === "rock") {
-        console.log("Tie!");
-        return "tie";
+        content.textContent = ("Tie!");
+       
     }
     else if(playerSelection === "paper" && computerSelection === "rock") {
-        console.log("You win! Paper beats Rock");
-        return "win";
+        content.textContent = ("You win! Paper beats Rock");
+        
     }
     else if(playerSelection === "paper" && computerSelection === "paper") {
-        console.log("Tie!");
-        return "tie"
+        content.textContent = ("Tie!");
+        
     }
     else if(playerSelection === "paper" && computerSelection === "scissors") {
-        console.log("You lose! Scissors beats Paper");
-        return "lose";
+        content.textContent = ("You lose! Scissors beats Paper");
+       
     }
     else if(playerSelection === "scissors" && computerSelection === "rock") {
-        console.log("You lose! Rock beats Scissors");
-        return "lose";
+        content.textContent = ("You lose! Rock beats Scissors");
+        
     }
     else if(playerSelection === "scissors" && computerSelection === "paper") {
-        console.log("You win! Scissors beats Paper");
-        return "win";
+        content.textContent = ("You win! Scissors beats Paper");
+        
     }
     else if(playerSelection === "scissors" && computerSelection === "scissors") {
-        console.log("Tie!");
-        return "tie";
+        content.textContent = ("Tie!");
+        
     }
+    results.appendChild(content);
 }
 
 /*function game() { //A Game of 5 rounds 
@@ -111,3 +114,23 @@ function playRound(playerSelection, computerSelection) { //Starts the round
 
 //game();
 
+const computerSelection = getComputerChoice();
+let playerSelection = '';
+console.log(computerSelection);
+
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+
+rock.addEventListener('click', function() {
+    playerSelection = 'rock';
+    playRound(playerSelection, computerSelection);
+});
+paper.addEventListener('click', function() {
+    playerSelection = 'paper';
+    playRound(playerSelection, computerSelection);
+});
+scissors.addEventListener('click', function() {
+    playerSelection = 'scissors';
+    playRound(playerSelection, computerSelection);
+});
