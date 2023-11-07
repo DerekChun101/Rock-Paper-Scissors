@@ -5,6 +5,10 @@
 
 #buttons-container {
     display: flex;
+    justify-content: space-around;
+}
+#playerButtons {
+    display: flex;
     justify-content: center;
 }
 #results {

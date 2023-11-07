@@ -98,19 +98,25 @@ startBtn.addEventListener('click', () => {
 
     }
 });
+const restartBtn = document.querySelector('#restart');
+restartBtn.addEventListener('click',() =>  {
+    resetGame();
+    isButtonClick = false;
+})
+
 function createButtons () {
-    const btnsContainer = document.querySelector('#buttons-container');
+        const btnsContainer = document.querySelector('#playerButtons');
         const rock = document.createElement('button');
         const paper = document.createElement('button');
         const scissors = document.createElement('button')
         rock.innerHTML = 'Rock';
-        rock.setAttribute('class', 'playerOptions');
+        rock.setAttribute('class', 'btnsContainer');
         rock.setAttribute('id', 'rock');
         paper.innerHTML = 'Paper';
-        paper.setAttribute('class', 'playerOptions');
+        paper.setAttribute('class', 'btnsContainer');
         paper.setAttribute('id', 'paper');
         scissors.innerHTML = 'Scissors';
-        scissors.setAttribute('class', 'playerOptions');
+        scissors.setAttribute('class', 'btnsContainer');
         scissors.setAttribute('id', 'scissors');
         btnsContainer.appendChild(rock);
         btnsContainer.appendChild(paper);
@@ -118,11 +124,8 @@ function createButtons () {
 }
 function game() {
     let playerSelection = '';
-    round = 0;
-    playerScore = 0;
-    computerScore = 0;
-    const playerOptions = document.querySelectorAll('.playerOptions')
-    playerOptions.forEach(option => {
+    const btnsContainer = document.querySelectorAll('.btnsContainer')
+    btnsContainer.forEach(option => {
     option.addEventListener('click', function() {
         playerSelection = this.id;
         const computerSelection = getComputerChoice();
@@ -157,7 +160,10 @@ function game() {
                 content.innerHTML = `Player Score: ${playerScore} <br> Computer Score: ${computerScore} <br> You Tie!`;
                 results.appendChild(content);
             }
-            resetGame();
+            const btnsContainer = document.querySelector('#playerButtons');
+            while(btnsContainer.firstChild) {
+                btnsContainer.firstChild.remove();
+            }
         }
     });
     });
@@ -168,6 +174,10 @@ function resetGame() {
     round = 0;
     playerScore = 0;
     computerScore = 0;
+    const results = document.querySelector('#results');
+    while (results.firstChild) {
+        results.firstChild.remove()
+    }
 }
 
 
