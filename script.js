@@ -35,47 +35,57 @@ function playRound(playerSelection, computerSelection) { //Starts the round
     const content = document.createElement('div');
     if(playerSelection === "rock" && computerSelection === "scissors") {
         content.textContent = ("You win! Rock beats Scissors");
+        results.appendChild(content);
+        return 'win';
 
     }
     else if(playerSelection === "rock" && computerSelection === "paper") {
         content.textContent = ("You lose! Paper beats Rock");
-       
+        results.appendChild(content);
+       return 'lose';
     }
     else if(playerSelection === "rock" && computerSelection === "rock") {
         content.textContent = ("Tie!");
-       
+        results.appendChild(content);
+        return 'tie';
     }
     else if(playerSelection === "paper" && computerSelection === "rock") {
         content.textContent = ("You win! Paper beats Rock");
-        
+        results.appendChild(content);
+        return 'win';
     }
     else if(playerSelection === "paper" && computerSelection === "paper") {
         content.textContent = ("Tie!");
-        
+        results.appendChild(content);
+        return 'tie';
     }
     else if(playerSelection === "paper" && computerSelection === "scissors") {
         content.textContent = ("You lose! Scissors beats Paper");
-       
+        results.appendChild(content);
+        return 'lose';
     }
     else if(playerSelection === "scissors" && computerSelection === "rock") {
         content.textContent = ("You lose! Rock beats Scissors");
-        
+        results.appendChild(content);
+        return 'lose';
     }
     else if(playerSelection === "scissors" && computerSelection === "paper") {
         content.textContent = ("You win! Scissors beats Paper");
-        
+        results.appendChild(content);
+        return 'win';
     }
     else if(playerSelection === "scissors" && computerSelection === "scissors") {
         content.textContent = ("Tie!");
-        
+        results.appendChild(content);
+        return 'tie';
     }
-    results.appendChild(content);
+    
 }
 
 /*function game() { //A Game of 5 rounds 
     let round = 0;
-    let playerCount = 0;
-    let computerCount = 0;
+    let playerScore = 0;
+    let computerScore = 0;
     while(round < 5) {
         const computerSelection = getComputerChoice();
         const playerSelection = getPlayerChoice();
@@ -83,10 +93,10 @@ function playRound(playerSelection, computerSelection) { //Starts the round
         console.log(computerSelection);
         switch(playRound(playerSelection, computerSelection)) {
             case "win":
-                playerCount++;
+                playerScore++;
                 break;
             case "lose":
-                computerCount++;
+                computerScore++;
                 break;
             case "tie":
                 break;
@@ -94,14 +104,14 @@ function playRound(playerSelection, computerSelection) { //Starts the round
         round++;
     }
 
-    console.log(playerCount); 
-    console.log(computerCount);
+    console.log(playerScore); 
+    console.log(computerScore);
 
-    if(playerCount > computerCount) {
+    if(playerScore > computerScore) {
         alert("You Won the Game!");
         console.log("Player Wins!")
     }
-    else if(playerCount < computerCount) {
+    else if(playerScore < computerScore) {
         alert("You Loss the Game!");
         console.log("Player loses")
     }
@@ -110,9 +120,58 @@ function playRound(playerSelection, computerSelection) { //Starts the round
         console.log("Player Ties")
     }
 }*/
+function game() {
+    let round = 0;
+    let playerScore = 0;
+    let computerScore = 0;
+    
+    let playerSelection = '';
+    
+    const playerOptions = document.querySelectorAll('.playerOptions')
+    playerOptions.forEach(option => {
+    option.addEventListener('click', function() {
+        playerSelection = this.id;
+        const computerSelection = getComputerChoice();
+        console.log(computerSelection);
+        console.log(playerSelection);
+        switch(playRound(playerSelection, computerSelection)) {
+            case "win":
+                playerScore++;
+                break;
+            case "lose":
+                computerScore++;
+                break;
+            case "tie":
+                break;
+        
+        }
+        round++;
+        console.log(round);
+        if(round === 5) {
+            console.log(playerScore); 
+            console.log(computerScore);
+        
+            if(playerScore > computerScore) {
+                alert("You Won the Game!");
+                console.log("Player Wins!")
+            }
+            else if(playerScore < computerScore) {
+                alert("You Loss the Game!");
+                console.log("Player loses")
+            }
+            else {
+                alert("You Tie!")
+                console.log("Player Ties")
+            }
+    
+        }
+    });
+    });
+    
+}
 
 
-//game();
+game();
 
 // const computerSelection = getComputerChoice();
 // let playerSelection = '';
@@ -135,14 +194,3 @@ function playRound(playerSelection, computerSelection) { //Starts the round
 //     playRound(playerSelection, computerSelection);
 // });
 
-const computerSelection = getComputerChoice();
-let playerSelection = '';
-console.log(computerSelection);
-const playerOptions = document.querySelectorAll('.playerOptions')
-playerOptions.forEach(option => {
-    option.addEventListener('click', function() {
-        playerSelection = this.id;
-        console.log(playerSelection);
-        playRound(playerSelection, computerSelection);
-    });
-});
