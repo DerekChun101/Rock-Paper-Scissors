@@ -16,13 +16,11 @@ function getPlayerChoice() { // Lets the player choose between rock papper and s
     switch(playerChoice) {
         case "rock":
             return "rock";
-            break;
+            
         case "paper":
             return "paper";
-            break;
         case "scissors":
             return "scissors";
-            break;
         default:
             alert("Make sure you spell it right");
             return getPlayerChoice();
@@ -31,7 +29,7 @@ function getPlayerChoice() { // Lets the player choose between rock papper and s
 }
 
 function playRound(playerSelection, computerSelection) { //Starts the round 
-    const results = document.querySelector('#results');
+    const results = document.querySelector('#results'); //Appends result to document
     const content = document.createElement('p');
     if(playerSelection === "rock" && computerSelection === "scissors") {
         content.textContent = ("You win! Rock beats Scissors");
@@ -87,7 +85,7 @@ let playerScore = 0;
 let computerScore = 0;
 let isButtonClick = false;
 
-const startBtn = document.querySelector('#start');
+const startBtn = document.querySelector('#start'); //Start Button logic
 startBtn.addEventListener('click', () => {
     if(isButtonClick === false) {
         isButtonClick = true;
@@ -98,13 +96,13 @@ startBtn.addEventListener('click', () => {
 
     }
 });
-const restartBtn = document.querySelector('#restart');
+const restartBtn = document.querySelector('#restart'); //Restart Button logic
 restartBtn.addEventListener('click',() =>  {
     resetGame();
     isButtonClick = false;
 })
 
-function createButtons () {
+function createButtons () { //Dynamically produces player options
         const btnsContainer = document.querySelector('#playerButtons');
         const rock = document.createElement('button');
         const paper = document.createElement('button');
@@ -124,14 +122,14 @@ function createButtons () {
 }
 function game() {
     let playerSelection = '';
-    const btnsContainer = document.querySelectorAll('.btnsContainer')
+    const btnsContainer = document.querySelectorAll('.btnsContainer') //Get buttons from document and assign it to player slection
     btnsContainer.forEach(option => {
     option.addEventListener('click', function() {
         playerSelection = this.id;
         const computerSelection = getComputerChoice();
         console.log(computerSelection);
         console.log(playerSelection);
-        switch(playRound(playerSelection, computerSelection)) {
+        switch(playRound(playerSelection, computerSelection)) { //determines player score by getting result from playRound
             case "win":
                 playerScore++;
                 break;
@@ -144,7 +142,7 @@ function game() {
         }
         round++;
         console.log(round);
-        if(round === 5) {
+        if(round === 5) { //After 5 rounds display final score
             const results = document.querySelector('#results');
             const content = document.createElement('p');
         
@@ -162,7 +160,7 @@ function game() {
             }
             const btnsContainer = document.querySelector('#playerButtons');
             while(btnsContainer.firstChild) {
-                btnsContainer.firstChild.remove();
+                btnsContainer.firstChild.remove(); // Remove player options after game is finish
             }
         }
     });
@@ -170,7 +168,7 @@ function game() {
     
 }
 
-function resetGame() {
+function resetGame() { // reset game and delete appended results
     round = 0;
     playerScore = 0;
     computerScore = 0;
