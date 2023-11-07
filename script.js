@@ -103,18 +103,18 @@ restartBtn.addEventListener('click',() =>  {
 })
 
 function createButtons () { //Dynamically produces player options
-        const btnsContainer = document.querySelector('#playerButtons');
+        const btnsContainer = document.querySelector('#player-buttons');
         const rock = document.createElement('button');
         const paper = document.createElement('button');
         const scissors = document.createElement('button')
         rock.innerHTML = 'Rock';
-        rock.setAttribute('class', 'btnsContainer');
+        rock.setAttribute('class', 'playerButtons');
         rock.setAttribute('id', 'rock');
         paper.innerHTML = 'Paper';
-        paper.setAttribute('class', 'btnsContainer');
+        paper.setAttribute('class', 'playerButtons');
         paper.setAttribute('id', 'paper');
         scissors.innerHTML = 'Scissors';
-        scissors.setAttribute('class', 'btnsContainer');
+        scissors.setAttribute('class', 'playerButtons');
         scissors.setAttribute('id', 'scissors');
         btnsContainer.appendChild(rock);
         btnsContainer.appendChild(paper);
@@ -122,7 +122,7 @@ function createButtons () { //Dynamically produces player options
 }
 function game() {
     let playerSelection = '';
-    const btnsContainer = document.querySelectorAll('.btnsContainer') //Get buttons from document and assign it to player slection
+    const btnsContainer = document.querySelectorAll('.playerButtons') //Get buttons from document and assign it to player slection
     btnsContainer.forEach(option => {
     option.addEventListener('click', function() {
         playerSelection = this.id;
@@ -158,7 +158,7 @@ function game() {
                 content.innerHTML = `Player Score: ${playerScore} <br> Computer Score: ${computerScore} <br> You Tie!`;
                 results.appendChild(content);
             }
-            const btnsContainer = document.querySelector('#playerButtons');
+            const btnsContainer = document.querySelector('#player-buttons');
             while(btnsContainer.firstChild) {
                 btnsContainer.firstChild.remove(); // Remove player options after game is finish
             }
