@@ -114,23 +114,35 @@ function playRound(playerSelection, computerSelection) { //Starts the round
 
 //game();
 
+// const computerSelection = getComputerChoice();
+// let playerSelection = '';
+// console.log(computerSelection);
+
+// const rock = document.querySelector('#rock');
+// const paper = document.querySelector('#paper');
+// const scissors = document.querySelector('#scissors');
+
+// rock.addEventListener('click', function() {
+//     playerSelection = 'rock';
+//     playRound(playerSelection, computerSelection);
+// });
+// paper.addEventListener('click', function() {
+//     playerSelection = 'paper';
+//     playRound(playerSelection, computerSelection);
+// });
+// scissors.addEventListener('click', function() {
+//     playerSelection = 'scissors';
+//     playRound(playerSelection, computerSelection);
+// });
+
 const computerSelection = getComputerChoice();
 let playerSelection = '';
 console.log(computerSelection);
-
-const rock = document.querySelector('#rock');
-const paper = document.querySelector('#paper');
-const scissors = document.querySelector('#scissors');
-
-rock.addEventListener('click', function() {
-    playerSelection = 'rock';
-    playRound(playerSelection, computerSelection);
-});
-paper.addEventListener('click', function() {
-    playerSelection = 'paper';
-    playRound(playerSelection, computerSelection);
-});
-scissors.addEventListener('click', function() {
-    playerSelection = 'scissors';
-    playRound(playerSelection, computerSelection);
+const playerOptions = document.querySelectorAll('.playerOptions')
+playerOptions.forEach(option => {
+    option.addEventListener('click', function() {
+        playerSelection = this.id;
+        console.log(playerSelection);
+        playRound(playerSelection, computerSelection);
+    });
 });
