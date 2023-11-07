@@ -32,7 +32,7 @@ function getPlayerChoice() { // Lets the player choose between rock papper and s
 
 function playRound(playerSelection, computerSelection) { //Starts the round 
     const results = document.querySelector('#results');
-    const content = document.createElement('div');
+    const content = document.createElement('p');
     if(playerSelection === "rock" && computerSelection === "scissors") {
         content.textContent = ("You win! Rock beats Scissors");
         results.appendChild(content);
@@ -85,12 +85,37 @@ function playRound(playerSelection, computerSelection) { //Starts the round
 let round = 0;
 let playerScore = 0;
 let computerScore = 0;
+let isButtonClick = false;
 
 const startBtn = document.querySelector('#start');
 startBtn.addEventListener('click', () => {
-    game();
-});
+    if(isButtonClick === false) {
+        isButtonClick = true;
+        createButtons();
+        game();
+    }
+    else {
 
+    }
+});
+function createButtons () {
+    const btnsContainer = document.querySelector('#buttons-container');
+        const rock = document.createElement('button');
+        const paper = document.createElement('button');
+        const scissors = document.createElement('button')
+        rock.innerHTML = 'Rock';
+        rock.setAttribute('class', 'playerOptions');
+        rock.setAttribute('id', 'rock');
+        paper.innerHTML = 'Paper';
+        paper.setAttribute('class', 'playerOptions');
+        paper.setAttribute('id', 'paper');
+        scissors.innerHTML = 'Scissors';
+        scissors.setAttribute('class', 'playerOptions');
+        scissors.setAttribute('id', 'scissors');
+        btnsContainer.appendChild(rock);
+        btnsContainer.appendChild(paper);
+        btnsContainer.appendChild(scissors);
+}
 function game() {
     let playerSelection = '';
     round = 0;
@@ -117,20 +142,20 @@ function game() {
         round++;
         console.log(round);
         if(round === 5) {
-            console.log(playerScore); 
-            console.log(computerScore);
+            const results = document.querySelector('#results');
+            const content = document.createElement('p');
         
             if(playerScore > computerScore) {
-                alert("You Won the Game!");
-                console.log("Player Wins!")
+                content.innerHTML = `Player Score: ${playerScore} <br> Computer Score: ${computerScore} <br> You Win!`;
+                results.appendChild(content);
             }
             else if(playerScore < computerScore) {
-                alert("You Loss the Game!");
-                console.log("Player loses")
+                content.innerHTML = `Player Score: ${playerScore} <br> Computer Score: ${computerScore} <br> You Lose!`;
+                results.appendChild(content);
             }
             else {
-                alert("You Tie!")
-                console.log("Player Ties")
+                content.innerHTML = `Player Score: ${playerScore} <br> Computer Score: ${computerScore} <br> You Tie!`;
+                results.appendChild(content);
             }
             resetGame();
         }

@@ -1,0 +1,12 @@
+#heading {
+    display:flex;
+    justify-content: center;
+}
+
+#buttons-container {
+    display: flex;
+    justify-content: center;
+}
+#results {
+    text-align: center;
+}
