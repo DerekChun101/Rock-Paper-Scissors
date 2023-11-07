@@ -120,13 +120,19 @@ function playRound(playerSelection, computerSelection) { //Starts the round
         console.log("Player Ties")
     }
 }*/
+let round = 0;
+let playerScore = 0;
+let computerScore = 0;
+
+const startBtn = document.querySelector('#start');
+startBtn.addEventListener('click', () => {
+    game();
+});
 function game() {
-    let round = 0;
-    let playerScore = 0;
-    let computerScore = 0;
-    
     let playerSelection = '';
-    
+    round = 0;
+    playerScore = 0;
+    computerScore = 0;
     const playerOptions = document.querySelectorAll('.playerOptions')
     playerOptions.forEach(option => {
     option.addEventListener('click', function() {
@@ -163,15 +169,20 @@ function game() {
                 alert("You Tie!")
                 console.log("Player Ties")
             }
-    
+            resetGame();
         }
     });
     });
     
 }
 
+function resetGame() {
+    round = 0;
+    playerScore = 0;
+    computerScore = 0;
+}
 
-game();
+
 
 // const computerSelection = getComputerChoice();
 // let playerSelection = '';
